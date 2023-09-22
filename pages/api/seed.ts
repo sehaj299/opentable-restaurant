@@ -11,7 +11,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
- // await prisma.table.deleteMany();
+  await prisma.table.deleteMany();
   await prisma.review.deleteMany();
   await prisma.item.deleteMany();
   await prisma.restaurant.deleteMany();
@@ -1047,7 +1047,7 @@ export default async function handler(
         email: "laith@hotmail.com",
         city: "ottawa",
         password: "$2b$10$I8xkU2nQ8EAHuVOdbMy9YO/.rSU3584Y.H4LrpIujGNDtmny9FnLu",
-        phone: 1112223333,
+        phone: "1112223333",
       },
     });
 
@@ -1058,7 +1058,7 @@ export default async function handler(
         email: "josh@hotmail.com",
         city: "toronto",
         password: "$2b$10$I8xkU2nQ8EAHuVOdbMy9YO/.rSU3584Y.H4LrpIujGNDtmny9FnLu",
-        phone: 1112223333,
+        phone: "1112223333",
       },
     });
 
@@ -1069,7 +1069,7 @@ export default async function handler(
         email: "lebron@hotmail.com",
         city: "niagara",
         password: "$2b$10$I8xkU2nQ8EAHuVOdbMy9YO/.rSU3584Y.H4LrpIujGNDtmny9FnLu",
-        phone: 1112223333,
+        phone: "1112223333",
       },
     });
 
@@ -1080,7 +1080,7 @@ export default async function handler(
         email: "cassidy@hotmail.com",
         city: "toronto",
         password: "$2b$10$I8xkU2nQ8EAHuVOdbMy9YO/.rSU3584Y.H4LrpIujGNDtmny9FnLu",
-        phone: 1112223333,
+        phone: "1112223333",
       },
     });
 
@@ -1305,22 +1305,22 @@ export default async function handler(
       ],
     });
 
-  //   await prisma.table.createMany({
-  //     data: [
-  //       {
-  //         restaurant_id: vivaanId,
-  //         seats: 4,
-  //       },
-  //       {
-  //         restaurant_id: vivaanId,
-  //         seats: 4,
-  //       },
-  //       {
-  //         restaurant_id: vivaanId,
-  //         seats: 2,
-  //       },
-  //     ],
-  //   });
+    await prisma.table.createMany({
+      data: [
+        {
+          restaurant_id: vivaanId,
+          seats: 4,
+        },
+        {
+          restaurant_id: vivaanId,
+          seats: 4,
+        },
+        {
+          restaurant_id: vivaanId,
+          seats: 2,
+        },
+      ],
+    });
 
   res.status(200).json({ name: "hello" });
 }

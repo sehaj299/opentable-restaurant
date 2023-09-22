@@ -20,7 +20,7 @@ export async function middleware(req:NextRequest,res:NextResponse) {
   }catch(error){
       return new NextResponse(
         JSON.stringify({errorMessage:"Unauthorized request"}),{status:401}
-      )
+      );
       
   }
 }

@@ -7,12 +7,15 @@ import Rating from "./components/Rating"
 import Description from "./components/Description"
 import RestaurantImages from "./components/RestaurantImages"
 import Reviews from "./components/Reviews"
+import ReservationCard from "./components/ReservationCard"
 const prisma= new PrismaClient()
 interface Restaurant{
   id: number;
     name: string;
     images: string[];
     description: string;
+    open_time:string;
+    close_time:string;
     slug: string;
     review:Review[]
 }
@@ -27,7 +30,9 @@ const fetchRestaurantBySlug=async(slug:string):Promise<Restaurant>=>{
       images: true,
       description:true,
       slug:true,
-      review:true
+      review:true,
+      open_time:true,
+      close_time:true,
     }
   })
   if (!restaurant){
@@ -46,7 +51,7 @@ async function RestaurantDetails({params}:props) {
     <div> {/* HEADER */}
       <Header/>
       {/* HEADER */} {/* DESCRIPTION PORTION */}
-      <div className="flex m-auto w-2/3 justify-between items-start 0 -mt-11">
+      <div className="flex m-auto w-2/3  items-centre 0 -mt-11">
         <div className="bg-white w-[70%] rounded p-3 shadow">
          
           <RestaurantNavbar slug={restaurant.slug}/>
@@ -61,12 +66,11 @@ async function RestaurantDetails({params}:props) {
           {/* IMAGES */} {/* REVIEWS */}
           <Reviews reviews= {restaurant.review}/>
           {/* REVIEWS */}
+         
         </div>
-       
+        <ReservationCard openTime={restaurant.open_time} 
+        closeTime={restaurant.close_time}/>
       </div>
-      {/* DESCRIPTION PORTION */} {/* RESERVATION CARD PORTION */} {/* RESERVATION
-      CARD PORTION */}
-   
   </div>
   )
 }
